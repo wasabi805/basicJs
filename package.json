@@ -1,0 +1,22 @@
+{
+  "name": "basicjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "npx prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wasabi805/basicJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wasabi805/basicJs/issues"
+  },
+  "homepage": "https://github.com/wasabi805/basicJs#readme",
+  "devDependencies": {
+    "prettier": "2.7.1"
+  }
+}
