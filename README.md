@@ -22,27 +22,27 @@ let mod5 = i % 5 === 0;
 
 2.) If it's true, then we can check to see if i % 5 === 0
 
-    mod3 ? ( mod5 ? "" : "") : "noCaseForFalseYet"
+    mod3 ? **( mod5 ? "" : "")** : "noCaseForFalseYet"
 
 3.) So inside mod5's trenery, if this this true, we already know i%3 === 0. That's why we're currently inside this case. Therefore, we can print 'FizzBuzz'.
 
-    mod3 ? ( mod5 ? console.log('FizzBuzz') : "") : "noCaseForFalseYet"
+    mod3 ? ( **mod5 ? console.log('FizzBuzz')** : "") : "noCaseForFalseYet"
 
 4.) If mod5's trenery check results to false, we still know that i%3 === 0 ;therfore, we should print 'Fizz'.
 
-    mod3 ? ( mod5 ? console.log('FizzBuzz') : console.log('FizzBuzz')) : "noCaseForFalseYet"
+    mod3 ? ( mod5 ? console.log('FizzBuzz') : **console.log('FizzBuzz'))** : "noCaseForFalseYet"
 
 5.) We still need to handle the case for if i%3 !==0 and we don't yet have a case to print 'Buzz'. So let's check here for i%5 === 0 so we cant print 'Buzz'.
 
-    mod3 ? ( mod5 ? console.log('FizzBuzz') : console.log('Fizz')) : mod5 ? "" : ""
+    mod3 ? ( mod5 ? console.log('FizzBuzz') : console.log('Fizz')) : **mod5 ? "" : ""**
 
 6.) If i%5 === 0, print 'Buzz'.
 
-    mod3 ? ( mod5 ? console.log('FizzBuzz') : console.log('Fizz')) : mod5 ? console.log('Buzz') : ""
+    mod3 ? ( mod5 ? console.log('FizzBuzz') : console.log('Fizz')) : **mod5 ? console.log('Buzz')** : ""
 
 7.) If i%5 !== 0, the print an empty string.
 
-    mod3 ? ( mod5 ? console.log('FizzBuzz') : console.log('Fizz')) : mod5 ? console.log('Buzz') : console.log("")
+    mod3 ? ( mod5 ? console.log('FizzBuzz') : console.log('Fizz')) : mod5 ? console.log('Buzz') : **console.log("")**
 
 8.) Finally, to make this thing DRY, make one console.log() instead of 4 of them.
 
