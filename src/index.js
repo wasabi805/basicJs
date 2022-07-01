@@ -1,49 +1,52 @@
-console.log("i work");
-/* source : https://www.fullstack.cafe/blog/javascript-code-interview-questions */
+/* 
 
-/* Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3,
-     "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5. */
+Use a recursive function to:
+  -convert strings to Camelcase
+  - If its a number reverse it
+  - If its a boolean value revert it */
 
-// The Not Eloquent way
-const solutionOne = () => {
-  for (let i = 0; i < 100; i++) {
-    let mod3 = (i % 3 === 0) === true;
-    let mod5 = (i % 5 === 0) === true;
-    let bothMod = mod3 === mod5;
-
-    if (mod3) {
-      console.log("Fizz");
-    }
-
-    if (mod5) {
-      console.log("Buzz");
-    }
-
-    if (bothMod) {
-      console.log("FizzBuzz");
-    }
-  }
+const source = {
+  name: "example",
+  id: 457,
+  description: {
+    gender: "male",
+    weight: 172,
+    hobies: ["baseball", "cricket", "football"],
+  },
+  isLoggedIn: false,
 };
 
-// solutionOne()
-
-// The cleaner approach ...
-
-const solutionTwo = () => {
-  for (let i = 0; i < 100; i++) {
-    let mod3 = i % 3 === 0;
-    let mod5 = i % 5 === 0;
-
-    console.log(mod3 ? (mod5 ? "FizzBuzz" : "Fizz") : mod5 ? "Buzz" : "");
-
-    /**
-     * BRREAKDOWN
-     *
-     * console.log( mod3 ?
-     * (mod5 ? "FizzBuzz" : "Fizz"): | True: Now since the first check for mod3===0 && mod5 currently is 0 -----> log "FizzBuz" | False:  currently, mod3===0 &&  mod3 !==0 so log "Fizz"
-     *   mod5 ? 'Buzz' : '' ) //: | True: mod3 !==0 &&  mod5===0, log "Buzz"  | False: log an empty string
-     */
-  }
+const captalizeString = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-solutionTwo();
+const reverseNum = (num) => {
+  const number = num
+    .toString()
+    .split("")
+    .reverse()
+    .reduce((prev, curr) => prev + curr);
+  return parseInt(number, 10);
+};
+
+function convert (obj){
+  Object.keys(obj).forEach((key) => {
+    if (Array.isArray(obj[key])) {
+      const array = obj[key];
+      obj[key] = array.map((str) => captalizeString(str));
+    } else if (typeof obj[key] === "string") {
+      obj[key] = captalizeString(obj[key]);
+    } else if (typeof obj[key] === "number") {
+      obj[key] = reverseNum(obj[key]);
+    } else if (typeof obj[key] === "boolean") {
+      obj[key] = !obj[key];
+    } else if (typeof obj[key] === "object" && obj[key] !== null) {
+      convert(obj[key]);
+    }
+  });
+};
+
+const destination = { ...source }; 
+convert(destination)
+
+console.log(destination);
